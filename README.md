@@ -21,8 +21,8 @@ Data la funzione f(x)=4/(1+x^2), è possibile stimare il valore di **PI** calcol
 La soluzione proposta è quella di partizionare il dominio del problema, cioè il **numero di iterazioni**, tra i processori a disposizione in maniera da distribuire equamente il carico di lavoro.
 Ai fini della soluzione tutti i processori, sia *MASTER* che *SLAVES*, sono impiegati nella computazione.
  
-- Si calcola il numero di iterazioni da eseguire ```c quotient``` per ciascun processore; 
-- Se abbiamo iterazioni rimanenti ```c rem ```  queste vengono distribuite dando +1 iterazione in più ai primi reminder processori;
+- Si calcola il numero di iterazioni da eseguire ```quotient``` per ciascun processore; 
+- Se abbiamo iterazioni rimanenti ```rem ```  queste vengono distribuite dando +1 iterazione in più ai primi reminder processori;
 
 ```c
 quotient = (int) niter / num_proc;
@@ -34,12 +34,12 @@ In definitiva la variabile ```sub_iter``` contiene il numero di iterazioni che d
 
 Ciascun processore inoltre dovrà inziare la computazione da un determinato valore che viene incrementato ad ogni ietrazione, in quanto i valori parziali utilizzati dalla regola del trapezio dipendono da esso.
 Tale informazione è memorizzata nella variabile ```sub_start```.
-```
+```c
 if(rem == 0) sub_start = my_rank*quotient;
 else sub_start = my_rank*quotient+my_rank-(my_rank>rem);
-```
+```c
 A questo punto ogni processore calcola il proprio valore locale in base al range definito precedentemente, chiamando la funzione ```trapezoidal_rule(int,int)```, passandole l'inizio dell'iterazione ```sub_start``` e quando arrestarsi ```sub_start+sub_iter``` .  
-```
+```c
 double trapezoidal_rule(int start,int finish){
 	int i;
 	double result = 0.0, x2 = 0.0;
@@ -54,12 +54,12 @@ double trapezoidal_rule(int start,int finish){
 local_result = trapezoidal_rule(sub_start,sub_start+sub_iter);  	/* current process calculate is local_result */	
 ```
 Una volta calcolato il valore locale ```local_result``` ogni processore *SLAVE* lo invia al processore *MASTER* tramite l'invocazione della funzione ```MPI_Send(...)```
-```
+```c
 	/* Current process send is local_result to Master process (rank = 0) */
 	if(my_rank != 0) MPI_Send(&local_result,1,MPI_DOUBLE,0,0,MPI_COMM_WORLD);
 ```
 Il processore *MASTER* riceve iterativamente i valori inviati dai processori *SLAVES* tramite la funzione ```MPI_Recv(...)``` e li somma insieme al valore locale propriamente calcolato, ottenendo un valore globale ```result```e calcola l'approssimazione finale di ```pi``` .
-```
+```c
 	else{ // Master process
 		result = local_result;
 			/* Get back the local_result from the others */
@@ -88,14 +88,14 @@ Ai fini della soluzione tutti i processori, sia *MASTER* che *SLAVES*, vengono i
 - Se abbiamo iterazioni rimanenti ```rem ```  queste vengono distribuite dando +1 iterazione in più ai primi reminder processori;
 
 In definitiva la variabile ```sub_iter``` contiene il numero di iterazioni che deve eseguire il processore corrente.
-```
+```c
 quotient = (int) niter / num_proc;
 rem = (int) niter % num_proc;
 sub_iter = my_rank < rem ? quotient+1 : quotient;
 ```
 Con questa suddivisione ciascun processore effettua un certo un numero di sotto-iterazioni andando a "misurare" i punti scelti in maniera pseudocasuale che ricadono nell'area del cerchio nel 1° quadrante.
 Questa informazione è memorizzata nella variabile ```local_count```. 
-```
+```c
 	/*  measurement of the number of pseudorandom points that fall within the circle area*/
 	for(i=0; i<sub_iter; i++){
 		x = (double) rand() / RAND_MAX;
@@ -107,7 +107,7 @@ Questa informazione è memorizzata nella variabile ```local_count```.
 Successivamente tutti i processori *SLAVE* inviano il numero di punti trovati ```local_count``` al processore *MASTER utilizzando* la funzione ```MPI_Send(...)```.
 A questi punto il processore *MASTER* riceve iterativamente i valori inviati dai processori *SLAVES* tramite la funzione ```MPI_Recv(...)``` e li somma insieme al valore locale propriamente calcolato 
 nella variabile ```count```. Infine procede a determinare il valore approssimato di **PI**: ```pi = (double) count / niter * 4;```
-```
+```c
 	/* Current process send is count to Master process (rank = 0) */
 	if(my_rank != 0) MPI_Send(&local_count,1,MPI_INT,0,0,MPI_COMM_WORLD); 
 	else{ // Master process
@@ -129,7 +129,7 @@ Questa soluzione, invece, non viene diviso in alcun modo il dominio del problema
 - ogni processore agisce in maniera indipendente eseguendo il numero di iterazioni assegnate in input e "misura" i punti pseudocasuali che ricadono nell'area del cerchio nel 1° quadrante. 
 Successivamente tutti i processori *SLAVE* inviano il numero di punti calcolati al processore *MASTER* che procede a determinare il valore approssimato di **PI**, considerando che il numero di **iterazioni totali** è: ```niter * num_proc```.
 
-```
+```c
 pi = (double) count / (niter *num_proc) * 4;
 ```
 
@@ -228,7 +228,7 @@ Il test di **strong scaling** è stato effettuato:
 7|28|0.011034|0.019119
 8|32|0.0100318|0.0192746
 
-![](Strong.jpg)
+![](img/Strong.jpg)
 
 Come si può vedere dai grafici il tempo di esecuzione per entrambi gli algoritmi diminuisce gradualemente con il crescere del numero di processori inizialmente, per poi quasi stabilizzarsi.
 
@@ -250,7 +250,7 @@ Il test di **weak scaling** è stato effettuato:
 7|28|2.8E+08|0.1444308|0.4194002
 8|32|3.2E+08|0.1448546|0.4123592
 
-![](Weak.jpg)
+![](img/Weak.jpg)
 
 Dai grafici:
 - **Trapezio**: il tempo cresce con l'aumentare della taglia del problema e del numero di processori, anche se oscilla quando si utilizzano dai 12 a 24 processori;
@@ -270,7 +270,7 @@ Vengono ora messi a confronto i due algortmi, riportando in un unico grafico i t
 7|28|0.011034|0.0000000779352201|0.019119|0.0016070535897899
 8|32|0.0100318|0.0000000999999901|0.0192746|0.0010742535897999
 
-![](Strong-Final.jpg)
+![](img/Strong-Final.jpg)
 
 **# processori**|**# iterazioni**|**Trapezio Tempo(s)**|**Trapezio Stima PI**|**MC Subset Tempo(s)**|**MC Subset Stima PI**
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:
@@ -284,7 +284,7 @@ Vengono ora messi a confronto i due algortmi, riportando in un unico grafico i t
 28|2.8E+08|0.1444308|4.9110895632355800|0.4194002|3.1412876000000000
 32|3.2E+08|0.1448546|5.0716458519016800|0.4123592|3.1412876000000000
 
-![](Weak-Final.jpg)
+![](img/Weak-Final.jpg)
 
 Osservazioni generali degli algoritmi:
 - **Monte Carlo**: 
@@ -317,7 +317,7 @@ ma i valori di **PI** si **discostano di tanto** dal valore **reale** di **PI**;
 
 Il grafico seguente mostra lo **speedup** di entrambi gli algoritmi confrontandolo con lo **speedup ideale**:
 
-![](speedup.jpg)
+![](img/speedup.jpg)
 
 ## Authors
 
