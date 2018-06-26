@@ -127,6 +127,7 @@ nella variabile ```count```. Infine procede a determinare il valore approssimato
 
 Questa soluzione, invece, non viene diviso in alcun modo il dominio del problema: 
 - ogni processore agisce in maniera indipendente eseguendo il numero di iterazioni assegnate in input e "misura" i punti pseudocasuali che ricadono nell'area del cerchio nel 1° quadrante. 
+
 Successivamente tutti i processori *SLAVE* inviano il numero di punti calcolati al processore *MASTER* che procede a determinare il valore approssimato di **PI**, considerando che il numero di **iterazioni totali** è: ```niter * num_proc```.
 
 ```c
@@ -140,9 +141,9 @@ Non vi è alcuna differenza sostanziale in quanto **Monte Carlo Repeat** è una 
 **MC Subset**| | | |**MC Repetition**| | 
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
 # processori|Iterazioni Input|Iterazioni Totali| |# processori|Iterazioni Input|Iterazioni Totali
-32|3.2E8|3.2E8|**<=>**|32|1E7|32*1E7 = 3.2E8
-8|8E7|8E7|**<=>**|8|1E7|8*1E7 = 8E7
-1|1E7|1E7|**<=>**|1|1E7|1*1E7 = 1E7
+32|3.2E8|3.2E8|<=>|32|1E7|32*1E7 = 3.2E8
+8|8E7|8E7|<=>|8|1E7|8*1E7 = 8E7
+1|1E7|1E7|<=>|1|1E7|1*1E7 = 1E7
 
 **IMPORTANTE**: Nei test vengono presi in considerazione soltanto gli algoritmi di **Monte Carlo Subset** (1° soluzione) e del **Trapezio** in quanto lavorano sullo **stesso numero di iterazioni** e, dunque, possono essere confrontati in maniera semplice e diretta.
 
