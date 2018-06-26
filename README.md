@@ -318,11 +318,11 @@ l'algoritmo del **Trapezio** risulta essere **più veloce** di molto dell'algori
 ma i valori di **PI** si **discostano di tanto** dal valore **reale** di **PI**; invece nell'algortimo di **Monte Carlo Subset** il valore di **PI** rimane **costante** nella stima ma **alti tempi** di esecuzione.
 
 #### Communication Collective vs Point-to-Point:
-- Utilizzando comunicazione **Collective** la sistuazione non varia in entrambi gli algoritmi:
- - i processori comunicano tra loro poche volte (1 ```MPI_Send(...)``` e 1 ```MPI_Recv(...)```); 
- - il partizionamento del dominio del problema avviene senza il bisogno di un processore MASTER che suddivide e comunica ai vari processori SLAVE i domini in cui operare, per cui non c'è alcun bisogno
+Utilizzando comunicazione **Collective** la sistuazione non varia in entrambi gli algoritmi:
+- i processori comunicano tra loro poche volte (1 ```MPI_Send(...)``` e 1 ```MPI_Recv(...)```); 
+- il partizionamento del dominio del problema avviene senza il bisogno di un processore MASTER che suddivide e comunica ai vari processori SLAVE i domini in cui operare, per cui non c'è alcun bisogno
  di utilizzare ```MPI_Scatter(...)```
- - nella fase di raccolta dei risultati locali il MASTER potrebbe utilizzare ```MPI_Reduce(...)``` ma ai fini delle prestazioni il risulato non cambia.
+- nella fase di raccolta dei risultati locali il MASTER potrebbe utilizzare ```MPI_Reduce(...)``` ma ai fini delle prestazioni il risulato non cambia.
  
 #### Speedup
 
