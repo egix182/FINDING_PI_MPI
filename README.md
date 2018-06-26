@@ -104,7 +104,7 @@ Questa informazione è memorizzata nella variabile ```local_count```.
 		if(z<=1) local_count++;	
 	}
 ```
-Successivamente tutti i processori *SLAVE* inviano il numero di punti trovati ```local_count``` al processore *MASTER utilizzando* la funzione ```MPI_Send(...)```.
+Successivamente tutti i processori *SLAVE* inviano il numero di punti trovati ```local_count``` al processore *MASTER* utilizzando la funzione ```MPI_Send(...)```.
 A questi punto il processore *MASTER* riceve iterativamente i valori inviati dai processori *SLAVES* tramite la funzione ```MPI_Recv(...)``` e li somma insieme al valore locale propriamente calcolato 
 nella variabile ```count```. Infine procede a determinare il valore approssimato di **PI**: ```pi = (double) count / niter * 4;```
 ```c
