@@ -185,7 +185,7 @@ mpirun -np <NUM_PROC> -host localhost <NOME_PROGRAMMA> <NUM_ITER [optional]>
 - *NOME_PROGRAMMA* è uno dei file eseguibili presentati precedentemnte;
 - *NUM_ITER* rappresenta il numero di iterazioni da eseguire (opzionale con **Trapezio** [default: 1E7]);
 
-Potrebbe essere necessario specificare il numero di slots per l'host, per cui creare un file nel modo seguente e modificare l'opzione ```-host``` con ```--hostfile <NOME_FILE>```:
+Potrebbe essere necessario specificare il numero di slots per l'host, per cui creare un file nel modo seguente e per eseguire un programma modificare l'opzione ```-host``` con ```--hostfile <NOME_FILE>```:
 ```bash
 localhost slots=32
 ```
