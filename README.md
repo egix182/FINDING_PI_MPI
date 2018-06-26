@@ -305,7 +305,7 @@ srand(time(NULL) + my_rank);
 
 - **Trapezio**:
 
-E' un metodo molto veloce ma è strutturato ad hoc per funzionare con un numero di iterazioni pari a **1E7** ed aumentando le iterazioni si perde precisione nel calcolare la stima del valore di **PI**.
+E' un metodo molto veloce ma è strutturato ad hoc per funzionare con un numero di iterazioni pari a **1E7** ed aumentando le iterazioni si perde precisione nel calcolare la stima del valore di **PI**. Nonstante tutto bisogna tenere in considerazione sempre dei problemi di rappresentazione in memoria finita dei numeri e degli errori di arrotondamento.
 
 #### Osservazioni dei test effettuati:
 - **Iterazioni fissate (1E7) - Processori crescenti**: 
