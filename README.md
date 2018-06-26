@@ -25,9 +25,9 @@ Ai fini della soluzione tutti i processori, sia *MASTER* che *SLAVES*, sono impi
 - Se abbiamo iterazioni rimanenti ```rem ```  queste vengono distribuite dando +1 iterazione in più ai primi reminder processori;
 
 ```
-	quotient = (int) niter / num_proc;
-    rem = (int) niter % num_proc;
-	sub_iter = my_rank< rem ? quotient+1 : quotient;
+quotient = (int) niter / num_proc;
+rem = (int) niter % num_proc;
+sub_iter = my_rank< rem ? quotient+1 : quotient;
 ```
 
 In definitiva la variabile ```sub_iter``` contiene il numero di iterazioni che deve eseguire il processore corrente.
