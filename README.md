@@ -297,7 +297,7 @@ Tuttavia aumentando, di molto, il numero di iterazioni non si è in grado di ott
 
 Nell'implementazione **Subset** si utilizza lo stesso seme fissato ```srand(SEED)``` per la generazione dei numeri pseudocasuali per ogni processore, rendendo la sequenza dei punti pseudocasuali identica e il numero di punti ammissibili si diminuisce in proporzione al numero di processori utilizzati (tenendo fissato il numero di iterazioni), causando una stima di **PI** poco precisa;
 Per rendere la situazione più pseudocasule e diversificata per ogni processore si potrebbe fare come di seguito:
-```
+```c
 srand(time(NULL) + my_rank);
 ```
 
@@ -315,7 +315,7 @@ l'algoritmo del **Trapezio** riesce ad essere **più veloce** e mantiene un'**ot
 l'algoritmo del **Trapezio** risulta essere **più veloce** di molto dell'algoritmo di **Monte Carlo Subset**, 
 ma i valori di **PI** si **discostano di tanto** dal valore **reale** di **PI**; invece nell'algortimo di **Monte Carlo Subset** il valore di **PI** rimane **costante** nella stima ma **alti tempi** di esecuzione.
 
-#### Collective vs Point-to-Point:
+#### Communication Collective vs Point-to-Point:
 - Utilizzando comunicazione **Collective** la sistuazione non varia in entrambi gli algoritmi:
  - i processori comunicano tra loro poche volte (1 ```MPI_Send(...)``` e 1 ```MPI_Recv(...)```); 
  - il partizionamento del dominio del problema avviene senza il bisogno di un processore MASTER che suddivide e comunica ai vari processori SLAVE i domini in cui operare, per cui non c'è alcun bisogno
@@ -326,7 +326,7 @@ ma i valori di **PI** si **discostano di tanto** dal valore **reale** di **PI**;
 
 Il grafico seguente mostra lo **speedup** di entrambi gli algoritmi confrontandolo con lo **speedup ideale**:
 
-![](img/speedup.jpg)
+![](img/Speedup.jpg)
 
 ## Authors
 
