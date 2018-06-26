@@ -140,7 +140,7 @@ Non vi è alcuna differenza sostanziale in quanto **Monte Carlo Repeat** è una 
 
 Per comprendere:
 
-|**MC Subset**| |||**MC Repetition**|
+ |**MC Subset**| | | |**MC Repetition**| 
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
 **processori**|**Iterazioni Input**|**Iterazioni Totali**|a|**# processori**|**Iterazioni Input**|**Iterazioni Totali**
 32|3.2E8|3.2E8|<=>|32|1E7|32*1E7 = 3.2E8
