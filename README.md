@@ -193,7 +193,7 @@ In quest'ultimo caso per il file **Trapezoidal_Rule_MPI.c** è neccessario utili
 
 ## Esecuzione del Benchmark
 
-Il segeuente benchmark è stato eseguito su un cluster di istanze fornite da *Amazon Web Service*, eseguendo test di **Strong scaling ** e **Weak scaling**. 
+Il segeuente benchmark è stato eseguito su un cluster di istanze fornite da *Amazon Web Service*, eseguendo test di **Strong scaling** e **Weak scaling**. 
 
 Nel dettaglio:
 - cluster di **8** istanze di tipo **M4.xlarge** (StarCluster AMI ami-52a0c53b Linux Ubuntu):
