@@ -152,11 +152,12 @@ Per comprendere:
 ## Progetto: compliazione & esecuzione
 
 Il progetto contiene i seguenti file:
-- **Trapezoidal_Rule_Sequential.c" -- File sorgente sequenziale della regola del trapezio
-- **Trapezoidal_Rule_MPI.c" -- File sorgente parallelo della regola del trapezio
-- **Monte_Carlo_Sequential.c" -- File sorgente sequenziale del metodo di Monte Carlo
-- **Monte_Carlo_Subset_MPI.c" -- File sorgente parallelo del metodo di Monte Carlo (1° Soluzione)
-- **Monte_Carlo_Repetition_MPI.c"-- File sorgente parallelo del metodo di Monte Carlo (Soluzione Alternativa - **NO TEST**)
+
+- **Trapezoidal_Rule_Sequential.c** -- File sorgente sequenziale della regola del trapezio
+- **Trapezoidal_Rule_MPI.c** -- File sorgente parallelo della regola del trapezio
+- **Monte_Carlo_Sequential.c** -- File sorgente sequenziale del metodo di Monte Carlo
+- **Monte_Carlo_Subset_MPI.c** -- File sorgente parallelo del metodo di Monte Carlo (1° Soluzione)
+- **Monte_Carlo_Repetition_MPI.c**-- File sorgente parallelo del metodo di Monte Carlo (Soluzione Alternativa - **NO TEST**)
 - **Makefile** -- File per la compilazione automatica dei sorgenti
 
 Per compilare i sorgenti eseguire i seguenti comandi:
