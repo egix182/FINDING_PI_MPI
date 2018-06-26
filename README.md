@@ -138,12 +138,11 @@ pi = (double) count / (niter *num_proc) * 4;
 
 Non vi è alcuna differenza sostanziale in quanto **Monte Carlo Repeat** è una *generalizzazione* di **Monte Carlo Subset**. Per comprendere:
 
-**MC Subset**| | | |**MC Repetition**| | 
-:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
-# processori|Iterazioni Input|Iterazioni Totali| |# processori|Iterazioni Input|Iterazioni Totali
-32|3.2E8|3.2E8|<=>|32|1E7|32*1E7 = 3.2E8
-8|8E7|8E7|<=>|8|1E7|8*1E7 = 8E7
-1|1E7|1E7|<=>|1|1E7|1*1E7 = 1E7
+**Iterazioni Input**|**Iterazioni Totali**| |**# processori**|**Iterazioni Input**|**Iterazioni Totali**
+:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
+3.2E8|3.2E8|<=>|32|1E7|32*1E7 = 3.2E8
+8E7|8E7|<=>|8|1E7|8*1E7 = 8E7
+1E7|1E7|<=>|1|1E7|1*1E7 = 1E7
 
 **IMPORTANTE**: Nei test vengono presi in considerazione soltanto gli algoritmi di **Monte Carlo Subset** (1° soluzione) e del **Trapezio** in quanto lavorano sullo **stesso numero di iterazioni** e, dunque, possono essere confrontati in maniera semplice e diretta.
 
