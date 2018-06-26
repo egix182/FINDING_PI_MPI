@@ -21,10 +21,10 @@ Data la funzione f(x)=4/(1+x^2), è possibile stimare il valore di **PI** calcol
 La soluzione proposta è quella di partizionare il dominio del problema, cioè il **numero di iterazioni**, tra i processori a disposizione in maniera da distribuire equamente il carico di lavoro.
 Ai fini della soluzione tutti i processori, sia *MASTER* che *SLAVES*, sono impiegati nella computazione.
  
-- Si calcola il numero di iterazioni da eseguire ```quotient``` per ciascun processore; 
-- Se abbiamo iterazioni rimanenti ```rem ```  queste vengono distribuite dando +1 iterazione in più ai primi reminder processori;
+- Si calcola il numero di iterazioni da eseguire ```c quotient``` per ciascun processore; 
+- Se abbiamo iterazioni rimanenti ```c rem ```  queste vengono distribuite dando +1 iterazione in più ai primi reminder processori;
 
-```
+```c
 quotient = (int) niter / num_proc;
 rem = (int) niter % num_proc;
 sub_iter = my_rank < rem ? quotient+1 : quotient;
