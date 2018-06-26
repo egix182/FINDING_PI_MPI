@@ -75,6 +75,7 @@ Il processore *MASTER* riceve iterativamente i valori inviati dai processori *SL
 
 Dato un cerchio di raggio 1, esso può essere inscritto in un quadrato di raggio 2. 
 Focalizzandosi sul primo quadrante, l'area del quadrato è 1 e l'area dell'area cerchio è invece pi/4. 
+
 Se generiamo N numeri random all'interno del quadrato il numero di punti che cadono nel cerchio M diviso il numero totale di numeri generati N dovrà approssimare appunto l'area del cerchio e quindi p/4.
 In sostanza otterremo pi = 4 * M / N.
 
