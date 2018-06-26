@@ -289,10 +289,12 @@ Vengono ora messi a confronto i due algortmi, riportando in un unico grafico i t
 
 ![](img/Weak-Final.jpg)
 
-Osservazioni generali degli algoritmi:
+#### Osservazioni generali degli algoritmi:
 - **Monte Carlo**: 
+
 E' un algoritmo randomico, per cui incrementando il numero di iterazioni si generano più punti pseudocasuali, sperando di ottenere una stima precisa del valore di **PI**.
 Tuttavia aumentando, di molto, il numero di iterazioni non si è in grado di ottenere una risposta più precisa a causa della rappresentazione in memoria finita dei numeri, degli errori di arrotondamento e del fatto che usiamo un generatore di numeri pseudocasuali invece di numeri del tutto casuali.
+
 Nell'implementazione **Subset** si utilizza lo stesso seme fissato ```srand(SEED)``` per la generazione dei numeri pseudocasuali per ogni processore, rendendo la sequenza dei punti pseudocasuali identica e il numero di punti ammissibili si diminuisce in proporzione al numero di processori utilizzati (tenendo fissato il numero di iterazioni), causando una stima di **PI** poco precisa;
 Per rendere la situazione più pseudocasule e diversificata per ogni processore si potrebbe fare come di seguito:
 ```
@@ -300,12 +302,16 @@ srand(time(NULL) + my_rank);
 ```
 
 - **Trapezio**:
+
 E' un metodo molto veloce ma è strutturato ad hoc per funzionare con un numero di iterazioni pari a **1E7** ed aumentando le iterazioni si perde precisione nel calcolare la stima del valore di **PI**.
 
-Osservazioni dei test effettuati:
+#### Osservazioni dei test effettuati:
 - **Iterazioni fissate (1E7) - Processori crescenti**: 
+
 l'algoritmo del **Trapezio** riesce ad essere **più veloce** e mantiene un'**ottima precisione** nello stimare il valore di **PI** a differenza dell'algoritmo di **Monte Carlo Subset** (più **lento** e **poco preciso**).
+
 - **Iterazioni crescenti (1E7 * # proc) - Processori crescenti**:  
+
 l'algoritmo del **Trapezio** risulta essere **più veloce** di molto dell'algoritmo di **Monte Carlo Subset**, 
 ma i valori di **PI** si **discostano di tanto** dal valore **reale** di **PI**; invece nell'algortimo di **Monte Carlo Subset** il valore di **PI** rimane **costante** nella stima ma **alti tempi** di esecuzione.
 
