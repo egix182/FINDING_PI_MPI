@@ -292,7 +292,7 @@ Vengono ora messi a confronto i due algortmi, riportando in un unico grafico i t
 Osservazioni generali degli algoritmi:
 - **Monte Carlo**: 
 E' un algoritmo randomico, per cui incrementando il numero di iterazioni si generano più punti pseudocasuali, sperando di ottenere una stima precisa del valore di **PI**.
-Tuttavia aumentando, di molto, il numero di iterazioni non si è in grado di ottenere una risposta più precisa a causa della rappresentazione in memoria della precisione dei numeri, degli errori di arrotondamento e del fatto che usiamo un generatore di numeri pseudocasuali invece di numeri del tutto casuali.
+Tuttavia aumentando, di molto, il numero di iterazioni non si è in grado di ottenere una risposta più precisa a causa della rappresentazione in memoria finita dei numeri, degli errori di arrotondamento e del fatto che usiamo un generatore di numeri pseudocasuali invece di numeri del tutto casuali.
 Nell'implementazione **Subset** si utilizza lo stesso seme fissato ```srand(SEED)``` per la generazione dei numeri pseudocasuali per ogni processore, rendendo la sequenza dei punti pseudocasuali identica e il numero di punti ammissibili si diminuisce in proporzione al numero di processori utilizzati (tenendo fissato il numero di iterazioni), causando una stima di **PI** poco precisa;
 Per rendere la situazione più pseudocasule e diversificata per ogni processore si potrebbe fare come di seguito:
 ```
