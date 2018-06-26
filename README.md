@@ -10,6 +10,8 @@ Implementazione e confronto di soluzioni algoritmiche dell'approssimazione del c
 **Dottore:** _Carmine Spagnuolo_
 **Studente:** _Egidio Giacoia_
 
+--------------------------------------------------------------------------------------------------------
+
 ## Problem Statement - Regola del Trapezio
 
 Data la funzione f(x)=4/(1+x^2), è possibile stimare il valore di **PI** calcolando l'integrale definito di f(x) da 0 a 1.
