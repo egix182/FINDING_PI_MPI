@@ -1,6 +1,6 @@
 # Finding PI using MPI
 
-Implementazione e confronto di soluzioni algoritmiche dell'approssimazione del calcolo di **PI** (regola del trepazio e metodo di Monte Carlo) mediante **MPI** utilizzando comunicazioni **Point-to-point** su istanze di tipo **M4.XLarge** di AWS;
+Implementazione e confronto di soluzioni algoritmiche dell'approssimazione del calcolo di **PI** (regola del trepezio e metodo di Monte Carlo) mediante **MPI** utilizzando comunicazioni **Point-to-point** su istanze di tipo **M4.XLarge** di AWS;
 
 ### Programmazione Concorrente, Parallela e su Cloud
 ### Università degli Studi di Salerno
