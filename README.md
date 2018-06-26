@@ -37,7 +37,7 @@ Tale informazione è memorizzata nella variabile ```sub_start```.
 ```c
 if(rem == 0) sub_start = my_rank*quotient;
 else sub_start = my_rank*quotient+my_rank-(my_rank>rem);
-```c
+```
 A questo punto ogni processore calcola il proprio valore locale in base al range definito precedentemente, chiamando la funzione ```trapezoidal_rule(int,int)```, passandole l'inizio dell'iterazione ```sub_start``` e quando arrestarsi ```sub_start+sub_iter``` .  
 ```c
 double trapezoidal_rule(int start,int finish){
