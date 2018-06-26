@@ -139,6 +139,7 @@ pi = (double) count / (niter *num_proc) * 4;
 Non vi è alcuna differenza sostanziale in quanto **Monte Carlo Repeat** è una *generalizzazione* di **Monte Carlo Subset**. 
 
 Per comprendere:
+
  |**MC Subset**| | | |**MC Repetition**| 
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
 # processori|Iterazioni Input|Iterazioni Totali| |# processori|Iterazioni Input|Iterazioni Totali
