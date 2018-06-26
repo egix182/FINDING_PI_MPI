@@ -89,9 +89,9 @@ Ai fini della soluzione tutti i processori, sia *MASTER* che *SLAVES*, vengono i
 
 In definitiva la variabile ```sub_iter``` contiene il numero di iterazioni che deve eseguire il processore corrente.
 ```
-	quotient = (int) niter / num_proc;
-    rem = (int) niter % num_proc;
-	sub_iter = my_rank< rem ? quotient+1 : quotient;
+quotient = (int) niter / num_proc;
+rem = (int) niter % num_proc;
+sub_iter = my_rank < rem ? quotient+1 : quotient;
 ```
 Con questa suddivisione ciascun processore effettua un certo un numero di sotto-iterazioni andando a "misurare" i punti scelti in maniera pseudocasuale che ricadono nell'area del cerchio nel 1° quadrante.
 Questa informazione è memorizzata nella variabile ```local_count```. 
@@ -205,7 +205,7 @@ Ciascun test è stato ripetuto 10 volte ed il tempo mostrato nei grafici seguent
 
 Sono stati messi a confronto i vari tempi di esecuzione e la stima del valore di **PI** calcolato degli algoritmi sequenziali al crescere del numero di iterazioni (da **1E7** fino a **3.2E8**).
 
-![](Sequenziale.jpg)
+![](img/Sequenziale.jpg)
 
 Dai grafici si evince che:
 - **Trapezio**: risulata essere più veloce ma al crescere del numero di iterazioni perde molta precisione nello stimare PI;
