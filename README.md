@@ -27,7 +27,7 @@ Ai fini della soluzione tutti i processori, sia *MASTER* che *SLAVES*, sono impi
 ```
 quotient = (int) niter / num_proc;
 rem = (int) niter % num_proc;
-sub_iter = my_rank< rem ? quotient+1 : quotient;
+sub_iter = my_rank < rem ? quotient+1 : quotient;
 ```
 
 In definitiva la variabile ```sub_iter``` contiene il numero di iterazioni che deve eseguire il processore corrente.
